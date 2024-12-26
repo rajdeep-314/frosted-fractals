@@ -1,4 +1,4 @@
 # To do
 
-- Use pygame
-- Make sier. triangle using chaos game
+- Maybe generate points for koch segment and then use fill inside the polygon
+

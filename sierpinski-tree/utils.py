@@ -81,35 +81,12 @@ def circ_gradient(x0, y0, cols, r_max, offset = 0):
     return func
 
 
-def circ_gradient2(x0, y0, col1, col2, col3, r_max, offset = 0):
-    def func(pt):
-        x = pt[0]
-        y = pt[1]
-        r = (x**2 + y**2)**0.5
-        theta = (eatan(x0, y0, x, y) - offset) % (2*pi)
-        if 0 <= theta < 2*pi/3:
-            col = ratio_div_3d(col1, col2, 3/2*theta/pi)
-        elif theta < 4*pi/3:
-            col = ratio_div_3d(col2, col3, 3/2*theta/pi -1)
-        else:
-            col = ratio_div_3d(col3, col1, 3/2*theta/pi -2)
-        # return ratio_div_3d((255, 255, 255), col, r/r_max)
-        return ratio_div_3d((1, 1, 1), col, r/r_max)
-    return func
-
-
 # random point inside a rectangle
 # (x, y) -> bottom left corner
 # l x w  -> dimensions
 def rand_rect(x, y, l, w):
     return (x + random.random()*l, y + random.random()*w)
 
-
-# plots points from a list of 2-tuples using turtle
-def plot_pts(pts_list):
-    init_pos = turtle.pos()
-    for pt in pts_list:
-        turtle.teleport(*pt)
-        turtle.dot(size = 1)
-    turtle.teleport(*init_pos)
+def polar_sum(pt, l, a):
+    return (pt[0] + l*math.cos(a), pt[1] + l*math.sin(a))
 

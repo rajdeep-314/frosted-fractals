@@ -74,6 +74,23 @@ def gen_carpet_pts(x0, y0, l, w, npts):
     return out_pts
 
 
+def draw_koch_segment(x0, y0, slen, angle, order, col_func = lambda pt : (255,255,255), width = 1):
+    if order == 0:
+        pygame.draw.line(surf, col_func((x0,y0)), (x0, height-y0), polar_sum((x0, height-y0), slen, -angle), width = width)
+        return
+    pt = (x0, y0)
+    for phi in [0, pi/3, -pi/3, 0]:
+        draw_koch_segment(*pt, slen/3, angle + phi, order-1, col_func, width = width)
+        pt = polar_sum(pt, slen/3, angle + phi)
+    
+
+def draw_koch_snowflake(x0, y0, slen, angle, order, col_func = lambda pt : (255,255,255), width = 1):
+    pt = polar_sum((x0, y0), slen/(3**0.5), 5*pi/6 + angle)
+    for i in range(3):
+        draw_koch_segment(*pt, slen, angle - 2*pi*i/3, order, col_func, width = width)
+        pt = polar_sum(pt, slen, angle - 2*pi*i/3)
+
+
 # plot points inside pts_list, by lighting up pixels at
 # those coordinates. color_func decides the color
 def plot_pts(pts_list, color_func = lambda pt : (255,255,255), surface = surf):
@@ -86,11 +103,20 @@ def plot_pts(pts_list, color_func = lambda pt : (255,255,255), surface = surf):
 chris_col_func = circ_gradient(width/2, height/2 - 100, ((255,50,50), (0,175,255), (255,50,50), (0,200,0)), 300)
 
 # generating the leaves and trunk
-leaves_pts = gen_tree_pts(width/2, height/2 - 115, 590, 3, 300000)
-trunk_pts = gen_carpet_pts(width/2, height/2 - 400, 175, 230, 100000)
+leaves_pts = gen_tree_pts(width/2, height/2 - 115, 590, 3, 100000)
+trunk_pts = gen_carpet_pts(width/2, height/2 - 400, 175, 230, 75000)
 
+# plotting snowflakes on the surface
+for i in range(25):
+    x = width/2 + random.choice([1, -1])*(0.15*width + random.random()*0.35*width)
+    y = random.random()*height
+    phi = random.random()*2*pi
+    size = 50 + 50*random.random()
+    col_ratio = random.random()
+    col_func = lambda pt : ratio_div_3d(white, cyan, col_ratio)
+    draw_koch_snowflake(x, y, size, phi, 4, col_func, width = 2)
 
-# plotting on the surface
+# plotting leaves and trunk on the surface
 plot_pts(trunk_pts, lambda pt : (110,38,14))
 plot_pts(leaves_pts, chris_col_func)
 
