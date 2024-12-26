@@ -21,9 +21,11 @@ def sgn(x):
 
 # "extended" arctan function :
 # gives the angle from (a, b) to (c, d) in the range [0, 2pi)
-# LaTeX verison: https://imgur.com/a/Q30wEVR
+# LaTeX verison: https://imgur.com/a/Q30wEVR (difference in handling div by zero)
 # (I came up with this myself)
 def eatan(a, b, c, d):
+    if a == c:
+        return  pi/8*(3 + sgn(b-d))
     return math.atan((b-d)/(a-c)) + pi*sgn(1 + sgn(a-c)) + 2*pi*sgn(sgn(a-c) - 1)*sgn(sgn(d-b) - 1)
 
 
