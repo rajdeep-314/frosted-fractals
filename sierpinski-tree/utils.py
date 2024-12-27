@@ -81,6 +81,15 @@ def circ_gradient(x0, y0, cols, r_max, offset = 0):
     return func
 
 
+def radial_gradient(x0, y0, cols, r_max):
+    def func(pt):
+        col1, col2 = cols
+        x = pt[0]
+        y = pt[1]
+        r = ((x-x0)**2 + (y-y0)**2)**0.5
+        return ratio_div_3d(col1, col2, r/r_max)
+    return func
+
 # random point inside a rectangle
 # (x, y) -> bottom left corner
 # l x w  -> dimensions
