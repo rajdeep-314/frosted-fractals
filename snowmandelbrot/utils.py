@@ -11,6 +11,26 @@ blue = (0, 0, 255)
 white = (255, 255, 255)
 black = (0, 0, 0)
 cyan = (0, 255, 255)
+violet = (148, 0, 211)
+indigo = (75, 0, 130)
+yellow = (255, 255, 0)
+orange = (255, 127, 0)
+
+
+def linear_gradient(cols, special_col = None):
+    ncols = len(cols)
+    def func(r):
+        if special_col is not None and r == 1:
+            return special_col
+        n = r*(ncols - 1)
+        floor_n = math.floor(n)
+        col1 = cols[floor_n]
+        col2 = cols[(floor_n+1)%ncols]
+        return ratio_div_3d(col1, col2, n - floor_n)
+    return func
+        
+
+
 
 # signum function, implemented using
 # short-circuiting of the boolean operators

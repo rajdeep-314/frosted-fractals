@@ -1,6 +1,4 @@
-import math
 import pygame
-import random
 from anarchy import *
 from utils import *
 

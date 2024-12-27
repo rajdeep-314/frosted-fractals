@@ -1,8 +1,6 @@
 # For saving high-resolution images
 
-import math
 import pygame
-import random
 from anarchy import *
 from utils import *
 
@@ -57,13 +55,4 @@ plot_pts(leaves_pts, chris_col_func)
 
 pygame.image.save(surf, "sierpinski-tree/images/4k/4.png")
 print("Done saving")
-
-# displaying the surface and keeping the display running
-while False:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
-
-    pygame.display.update()
 
