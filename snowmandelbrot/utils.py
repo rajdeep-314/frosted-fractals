@@ -3,6 +3,37 @@
 import math
 import random
 
+# -------------------------------------------------------------------------------------------
+#                                   from anarchy
+# -------------------------------------------------------------------------------------------
+# generating points for a Sierpinski triangle, using chaos game,
+# with it's centroid at (x0, y0) side length being slen, and
+# number of points being npts
+def gen_triangle_pts(x0, y0, slen, npts):
+    inradius = 0.5*slen/(3**0.5)
+
+    # the initial point is a random point inside the incircle
+    rand_r = random.random()*inradius
+    rand_theta = random.random()*2*math.pi
+
+    # accumulator point : (rand_r, rand_theta) in polar coordinates, with (x0, y0) as origin
+    acc_pt = (x0 + rand_r*math.cos(rand_theta), y0 + rand_r*math.sin(rand_theta))
+    
+    # p1, p2, p3 -> vertices of the triangle
+    p1 = (x0 - slen/2, y0 - inradius)
+    p2 = (x0 + slen/2, y0 - inradius)
+    p3 = (x0, y0 + 2*inradius)
+    pts_list = [p1, p2, p3]
+
+    out_pts = [acc_pt]      # output points
+    for i in range(npts-1):
+        acc_pt = midpoint_2d(acc_pt, random.choice(pts_list))
+        out_pts.append(acc_pt)
+
+    return out_pts
+# -------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------
+
 # some useful constants
 pi = math.pi
 red = (255, 0, 0)
@@ -16,6 +47,11 @@ indigo = (75, 0, 130)
 yellow = (255, 255, 0)
 orange = (255, 127, 0)
 
+# returns a range of numbers from 0 to r-1 (both inclusive),
+# such that none of the numbers is a neighbour of i
+def remove_neighbours(r, i):
+    l = list(range(r))
+    return [l[k] for k in range(len(l)) if (k+1)%r != i and (k-1)%r != i]
 
 def linear_gradient(cols, special_col = None):
     ncols = len(cols)
@@ -30,6 +66,13 @@ def linear_gradient(cols, special_col = None):
     return func
         
 
+# color maps
+grayscale1 = linear_gradient((black, white))
+grayscale2 = linear_gradient((white, black))
+rainbow = linear_gradient((red, orange, yellow, green, blue, indigo, violet), special_col = black)
+fire = linear_gradient(((59,14,0), orange), special_col = black)
+ice = linear_gradient(((0,0,50), blue, white), special_col = black)
+snow = linear_gradient(((0,20,20), cyan, cyan, cyan, cyan), special_col = white)
 
 
 # signum function, implemented using
@@ -114,6 +157,14 @@ def radial_gradient(x0, y0, cols, r_max):
 # l x w  -> dimensions
 def rand_rect(x, y, l, w):
     return (x + random.random()*l, y + random.random()*w)
+
+# random point inside a circle
+# (x, y) -> centre
+# r      -> radius
+def rand_circ(x, y, r):
+    rand_r = random.random()*r
+    rand_theta = random.random()*2*pi
+    return (x + rand_r*math.cos(rand_theta), y + rand_r*math.sin(rand_theta))
 
 def polar_sum(pt, l, a):
     return (pt[0] + l*math.cos(a), pt[1] + l*math.sin(a))
