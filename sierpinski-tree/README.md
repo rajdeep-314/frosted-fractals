@@ -1,5 +1,6 @@
 # Sierpinski Tree
 
+
 ## The fractals involved
 
 The *Sierpinski Tree*, as the name suggests, is largely made of Sierpinksi fractals:
@@ -13,13 +14,13 @@ The *Sierpinski Tree*, as the name suggests, is largely made of Sierpinksi fract
     - `main.py`: 10,000
     - `sv-main.py`: 1,00,000
 
-You can find images of each of these fractals in their full glory down below. The points for each of these were generated using the code inside `individual.py`
+You can find images of each of these fractals in their full glory down below. The points for each of these were generated using the code inside `individuals/code`
+
+
 
 ## File contents
 
-Here's some info on the files and directories
-
-- `sierpinski-tree-4k.png`: The main 4K image that I'm submitting, generated using `sv-main.py`
+Here's some info on the files and directories - `sierpinski-tree-4k.png`: The main 4K image that I'm submitting, generated using `sv-main.py`
 
 - `utils.py`:
     A Python module with some useful "utility" functions, among some frequently used constants. This module is used by every other `.py` file
@@ -35,3 +36,12 @@ Here's some info on the files and directories
 
 - `individuals`:
     Contains images of the individual fractals used, not meant as submissions but as a showcase of these beauties in their complete glory, unrestricted by the lack of resolution in main image. The code used for generating these images is in the `code` sub-directory.
+
+
+
+## Images
+
+![The Sierpinski Tree (4K)](sierpinski-tree-4k.png)
+![Sierpinski Carpet](individuals/sierpinski-carpet.png)
+![Sierpinski Tree](individuals/sierpinski-tree.png)
+![Vicsek Fractal](individuals/vicsek-fractal.png)
