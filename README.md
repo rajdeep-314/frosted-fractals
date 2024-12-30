@@ -1,6 +1,6 @@
 # Frosted Fractals
 
-This is my submission for Frosted Fractals - the fractal making competition hosted by IIT Palakkad's math club, The Mandelbrot Set.
+This is my submission for Frosted Fractals - a fractal making competition hosted by IIT Palakkad's math club, The Mandelbrot Set.
 
 I'm submitting two images:
 
@@ -11,7 +11,7 @@ I'm submitting two images:
 
 ## Requirements
 
-Ensure that the Python module `pygame` is installed on your computer. I used the module for everything graphics-related.
+Ensure that the Python library `pygame` is installed on your computer. I used the module for everything graphics-related.
 
 To install pygame in a virtual environment, simply use
 
@@ -29,7 +29,7 @@ sudo apt install python3-pygame
 ## Submissions
 
 ![Snowmandelbrot](snowmandelbrot/snowmandelbrot-4k.png)
-*Snowmandelbrot*
+<center> *Snowmandelbrot* </center>
 
 ![Sierpinski Tree](sierpinski-tree/sierpinski-tree-4k.png)
-*Sierpinski Tree*
+<center> *Sierpinski Tree* </center>
