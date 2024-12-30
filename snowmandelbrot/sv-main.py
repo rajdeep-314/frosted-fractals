@@ -1,34 +1,49 @@
-# Mandelbrot set
+"""sv-main.py
+The main Python file for generating and saving a 4K image. Rendering this image will take a considerable amount of time (around 3.5 minutes) and the image will be saved in the current working directory.
+
+"""
 
 import pygame
 from utils import *
 
 # pygame initialization
 pygame.init()
+# 4K resolution
 width = 3840
 height = 2160
 surf = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Sierpinski Tree")
+pygame.display.set_caption("Snowmandelbrot 4K")
 surf.fill((0,0,0))      # black background
 
-# some global parameters
-scale = 810                 # one unit on R = `scale` pixels
+scale = 810                 # one unit on the real number line = `scale` pixels
 
 
+# this real number is equal to the number of iterations of
+# the Mandelbrot formula (z_{n+1} = z_{n}^2 + z_0) the point z
+# goes outside inf (i.e. |z| > inf), divided by max_iter
+# for a point that never goes outside inf, it returns 1
 def k_factor(z, max_iter, inf):
     z0 = z
-    for i in range(max_iter):
-        if abs(z) >= inf:
+    for i in range(int(max_iter)):
+        if abs(z) > inf:
             return i/(max_iter-1)
         z = z**2 + z0
     return 1
 
 
-def gen_mandelbrot_pts(x1, x2, y1, y2, delta, max_iter = 50, inf = 10, show_status = False):
-    x_pts = int((x2-x1)/delta)
-    y_pts = int((y2-y1)/delta)
-    total_pts = x_pts * y_pts
-    pts_list = []
+# returns two lists in a tuple, say (p, k), where
+# p are all the points (x, y) such that x1 <= x <= x2 and y1 <= y <= y2,
+# sampled at differences of delta
+# k is the list of the k-factors for these points, evaluated with
+# max_iter and inf as it's parameters
+# if show_status is True, the progress of these calculations is printed
+def gen_mandelbrot_pts(x1, x2, y1, y2, delta, max_iter = 100, inf = 10, show_status = False):
+    x_pts = int((x2-x1)/delta)              # no. of points along the grid's length
+    y_pts = int((y2-y1)/delta)              # no. of points along the grid's width
+    total_pts = x_pts * y_pts               # no. of total points in the grid
+    pts_list = []                           # the list p, from the comment before the function
+
+    # if show_status is set to True, display the progress
     if show_status:
         print("\n\n")
         for i in range(x_pts):
@@ -36,42 +51,25 @@ def gen_mandelbrot_pts(x1, x2, y1, y2, delta, max_iter = 50, inf = 10, show_stat
                 progress = i*y_pts + j + 1
                 print("\rMandelbrot calculation progress: " + "#"*int((progress/total_pts)*50) + "-"*int((1 - progress/total_pts)*50), end = "")
                 pts_list.append(complex(x1+i*delta, y1+j*delta))
+
+    # if show_status is False, the calculations are faster,
+    # as list comprehension is used instead of two nested for loops
     else:
         pts_list = [complex(x1+i*delta, y1+j*delta) for i in range(x_pts) for j in range(y_pts)]
+
+    # this list is k, from the comment before the function
     kfs_list = [k_factor(z, max_iter, inf) for z in pts_list]
+    
+    # print a new line if show_status is True
     if show_status:
         print()
+
     return (pts_list, kfs_list)
-        
 
-def gen_star_pts(x0, y0, slen, npts, angle = 0):
-    circum_radius = 0.5*slen/math.sin(pi/5)
-    inradius = 0.5*slen*math.tan(pi/5)
-    p1 = polar_sum((x0, y0), circum_radius, pi/10 + angle)
-    p2 = polar_sum((x0, y0), circum_radius, pi/10 + 2*pi/5 + angle)
-    p3 = polar_sum((x0, y0), circum_radius, pi/10 + 4*pi/5 + angle)
-    p4 = polar_sum((x0, y0), circum_radius, pi/10 + 6*pi/5 + angle)
-    p5 = polar_sum((x0, y0), circum_radius, pi/10 + 8*pi/5 + angle)
-    pts_list = [p1, p2, p3, p4, p5]
-
-    last = None
-    second_last = None
-    # the accumulator point
-    acc_pt = rand_circ(x0, y0, inradius)
-    out_pts = [acc_pt]
-
-    for i in range(npts):
-        if last == second_last and last is not None:
-            new = random.choice(remove_neighbours(5, last))
-        else:
-            new = random.choice(range(5))
-        last, second_last = new, last
-        acc_pt = midpoint_2d(acc_pt, pts_list[new])
-        out_pts.append(acc_pt)
-    return out_pts
 
 # plot points inside pts_list, by lighting up pixels at
-# those coordinates. color_func decides the color
+# those coordinates. color_func decides the color based on
+# the points' coordinates
 def plot_pts(pts_list, color_func = lambda pt : (255,255,255), surface = surf):
     for pt in pts_list:
         pt = (int(pt[0]), height - int(pt[1]))      # integer coordinates and y-coordinate flipping
@@ -79,30 +77,37 @@ def plot_pts(pts_list, color_func = lambda pt : (255,255,255), surface = surf):
 
 
 # plot points inside pts_list, by lighting up pixels at
-# those coordinates. color_func decides the color
-def plot_mandel_pts(pts_list, kfs_list, map_func = lambda pt : pt, color_func = lambda r : (255,255,255)):
+# those coordinates. color_func decides the color based on
+# the k-factor inside kfs_list
+def plot_mandel_pts(pts_list, kfs_list, map_func = lambda pt : pt, color_func = lambda r : (255,255,255), surface = surf):
     for pt, k in zip(pts_list, kfs_list):
         x, y = map_func(pt)
         col = color_func(k)
-        surf.set_at((int(x), int(y)), col)
+        surface.set_at((int(x), int(y)), col)
 
 
+# mapping a point in the Cartesian plane to the screen,
+# this gives the Mandelbrot set the snowman-like orientation
 def map_func(pt):
     x = pt.real
     y = pt.imag
     return (width/2 + scale*y, height + scale*(x-0.4))
         
 
-# pts, ks = gen_mandelbrot_pts(-1.97,0.4,-2.2,2.2,0.001, max_iter = 250, inf = 25, show_status = True)
+# points for the mandelbrot set
 pts, ks = gen_mandelbrot_pts(-2.66666,0.4,-2.37037,2.37037,0.001, max_iter = 250, inf = 25, show_status = True)
+
+# points for the cap and star atop the Snowmandelbrot
 cap_pts = gen_triangle_pts(width/2, 0.685*height, 0.225*height, 1000000)
 star_pts = gen_star_pts(width/2, 0.87*height, 0.065*height, 42000, pi)
 
-plot_mandel_pts(pts, ks, map_func, snow)
-plot_pts(cap_pts, lambda pt : (255,0,0))
-plot_pts(star_pts)
+# plotting all the generated points
+plot_mandel_pts(pts, ks, map_func, snow, surface=surf)
+plot_pts(cap_pts, lambda pt : (255,0,0), surface=surf)
+plot_pts(star_pts, surface=surf)
 
 
-pygame.image.save(surf, "snowmandelbrot/images/main-mid.png")
+# saving the result in the current working directory
+pygame.image.save(surf, "snowmandelbrot-4k.png")
 print("\nDone saving")
 

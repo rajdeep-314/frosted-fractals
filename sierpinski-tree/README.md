@@ -44,10 +44,14 @@ Here's some info on the files and directories
 
 
 
-## Images
+## The Main Image
 
 ![The Sierpinski Tree (4K)](sierpinski-tree-4k.png)
 *The Sierpinski Tree (4K)*
+
+
+
+## Individual Images
 
 ![Sierpinski Carpet](individuals/sierpinski-carpet.png)
 *Sierpinski Carpet*

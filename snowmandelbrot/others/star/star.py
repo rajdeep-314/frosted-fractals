@@ -1,5 +1,8 @@
 # NOTE: Just for showcasing, not part of the main submission
 
+import sys
+sys.path.insert(1, sys.path[0] + "/../..")
+
 import pygame
 from utils import *
 

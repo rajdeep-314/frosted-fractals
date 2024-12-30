@@ -5,7 +5,7 @@ import random
 
 # some useful constants
 pi = math.pi
-# RGB values for colors
+# RGB values for some frequently used colors
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
@@ -68,7 +68,7 @@ def midpoint_2d(p1, p2):
 #             0 < theta < 2pi/n -> linear gradient b/n cols[0] and cols[1]
 #         2pi/n < theta < 4pi/n -> linear gradient b/n cols[1] and cols[2]
 #                     ...       ->                ...
-#     (n-1)*2pi/n < theta < 2pi -> linear gradient b/n cols[n-1] and cols[0]
+#     (n-1)*2pi/n < theta < 2pi -> linear gradient b/n cols[-1] and cols[0]
 #
 # let the color given by the above conditions be denoted by c. Then the final
 #       color varies linearly from white to c, with the factor r/r_max, i.e.
