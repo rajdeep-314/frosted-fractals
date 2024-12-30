@@ -42,14 +42,14 @@ Here's some info on the files and directories - `sierpinski-tree-4k.png`: The ma
 ## Images
 
 ![The Sierpinski Tree (4K)](sierpinski-tree-4k.png)
-*The Sierpinski Tree (4K)*
+<center>*The Sierpinski Tree (4K)*</center>
 
 ![Sierpinski Carpet](individuals/sierpinski-carpet.png)
-*Sierpinski Carpet*
+<center>*Sierpinski Carpet*</center>
 
 ![Sierpinski Triangle](individuals/sierpinski-triangle.png)
-*Sierpinski Triangle*
+<center>*Sierpinski Triangle*</center>
 
 ![Vicsek Fractal](individuals/vicsek-fractal.png)
-*Vicsek Fractal*
+<center>*Vicsek Fractal*</center>
 
