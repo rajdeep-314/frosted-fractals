@@ -19,10 +19,7 @@ You can find images of each of these fractals in their full glory down below. Th
 
 Here's some info on the files and directories
 
-- `images`:
-    This directory contains the generated images, namely:
-    - `sierpinski-tree-4k.png`: generated using `sv-main.py`, the main 4K image that I wish to submit
-    - `individuals`: contains images of the individual fractals used, not meant as submissions but as a showcase of these beauties in their complete glory, unrestricted by the lack of resolution in main image. The code used for generating these images is in the `individuals-code` directory in the main directory.
+- `sierpinski-tree-4k.png`: The main 4K image that I'm submitting, generated using `sv-main.py`
 
 - `utils.py`:
     A Python module with some useful "utility" functions, among some frequently used constants. This module is used by every other `.py` file
@@ -36,5 +33,5 @@ Here's some info on the files and directories
 - `sv-main.py`:
     The main Python file for saving a 4K image. Rendering this image will take a considerable amount of time and the image will be saved in the current working directory
 
-- `individuals-code`:
-    This directory contains code that was used to generate the images in `images/individuals`. Once again, this code is only meant as a showcase, and not as a submission
+- `individuals`:
+    Contains images of the individual fractals used, not meant as submissions but as a showcase of these beauties in their complete glory, unrestricted by the lack of resolution in main image. The code used for generating these images is in the `code` sub-directory.

@@ -6,7 +6,6 @@ Warning: This might take a LOT of time
 
 import pygame
 from anarchy import *
-from utils import *
 
 
 # pygame initialization
@@ -70,5 +69,5 @@ plot_pts(leaves_pts, chris_col_func)
 
 # saving the result in the current working directory
 pygame.image.save(surf, "sierpinksi-tree-4k.png")
-print("Done saving")
+print("\nDone saving")
 

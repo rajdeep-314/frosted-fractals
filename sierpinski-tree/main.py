@@ -5,7 +5,6 @@ Run sv-main.py to generate and save a 4K image (takes a lot of time to render)
 
 import pygame
 from anarchy import *
-from utils import *
 
 
 # pygame initialization
