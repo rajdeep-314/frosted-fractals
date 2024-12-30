@@ -29,7 +29,7 @@ sudo apt install python3-pygame
 ## Submissions
 
 ![Snowmandelbrot](snowmandelbrot/snowmandelbrot-4k.png)
-<p align="center">Snowmandelbrot</p>
+<p align="center">Snowmandelbrot</p> <br>
 
 ![Sierpinski Tree](sierpinski-tree/sierpinski-tree-4k.png)
-<p align="center">Sierpinski Tree</p>
+<p align="center">Sierpinski Tree</p> <br>

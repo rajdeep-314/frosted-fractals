@@ -13,11 +13,11 @@ The *Sierpinski Tree*, as the name suggests, is largely made of Sierpinksi fract
     - `main.py`: 2,00,000
     - `sv-main.py`: 20,00,000
 
-- The snowflakes are all randomly placed, coloured, and oriented. Each one of them is a Vicsek fractal with the number of points in each of them being
+- The snowflakes are all randomly placed, coloured, and oriented. Each one of them is a Vicsek fractal with the number of points in each being
     - `main.py`: 10,000
     - `sv-main.py`: 1,00,000
 
-You can find images of each of these fractals in their full glory down below. The points for each of these were generated using the code inside `individuals/code`
+You can find images of each of these individual fractals in their full glory down below. Each of these individual images were generated using the code inside `individuals/code`
 
 
 
@@ -28,37 +28,37 @@ Here's some info on the files and directories
 - `sierpinski-tree-4k.png`: The main 4K image that I'm submitting, generated using `sv-main.py`
 
 - `utils.py`:
-    A Python module with some useful "utility" functions, among some frequently used constants. This module is used by every other `.py` file
+    A Python module with some useful "utility" functions, among some frequently used constants. This module is used by every other `.py` file.
 
 - `anarchy.py`:
-    Contains functions that use chaos game to generate points for fractals. These functions are chaos generators, hence the module's name
+    Contains functions that use chaos game to generate points for fractals. These functions are chaos generators, hence the module's name.
 
 - `main.py`:
     The main Python file. Running it should open a window of near-HD resolution. The image should be rendered in under 10 seconds.
 
 - `sv-main.py`:
-    The main Python file for saving a 4K image. Rendering this image will take a considerable amount of time and the image will be saved in the current working directory
+    The main Python file for saving a 4K image. Rendering this image will take a considerable amount of time and the image will be saved in the current working directory.
 
 - `individuals`:
-    Contains images of the individual fractals used, not meant as submissions but as a showcase of these beauties in their complete glory, unrestricted by the lack of resolution in main image. The code used for generating these images is in the `code` sub-directory.
+    Contains images of the individual fractals used, not meant as submissions but as a showcase of these beauties in their complete glory, unrestricted by the lack of resolution in the main image. The code used for generating these images is in the `code` sub-directory.
 
 
 
-## The Main Image
+## The main image
 
 ![The Sierpinski Tree (4K)](sierpinski-tree-4k.png)
-*The Sierpinski Tree (4K)*
+<p align="center">The Sierpinski Tree (4K)</p> <br>
 
 
 
-## Individual Images
+## Individual images
 
 ![Sierpinski Carpet](individuals/sierpinski-carpet.png)
-*Sierpinski Carpet*
+<p align="center">Sierpinski Carpet</p> <br>
 
 ![Sierpinski Triangle](individuals/sierpinski-triangle.png)
-*Sierpinski Triangle*
+<p align="center">Sierpinski Triangle</p> <br>
 
 ![Vicsek Fractal](individuals/vicsek-fractal.png)
-*Vicsek Fractal*
+<p align="center">Vicsek Fractal</p> <br>
 

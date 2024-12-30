@@ -37,29 +37,29 @@ Here's some info on the files and directories
 
 
 
-## The Main Image
+## The main image
 
 ![The Snowmandelbrot (4K)](snowmandelbrot-4k.png)
-*The Snowmandelbrot*
+<p align="center">The Snowmandelbrot</p> <br>
 
 
 
-## Other Images
+## Other images
 
 These are some nice alternative color maps for the Mandelbrot set. All of them were generated using an older version of `main.py`
 
 ![Mandelbrot Set - Fire](others/fire.png)
-*Mandelbrot Set - Fire*
+<p align="center">Mandelbrot Set - Fire</p> <br>
 
 ![Mandelbrot Set - Ice](others/ice.png)
-*Mandelbrot Set - Ice*
+<p align="center">Mandelbrot Set - Ice</p> <br>
 
 ![Mandelbrot Set - Snow](others/snow.png)
-*Mandelbrot Set - Snow*
+<p align="center">Mandelbrot Set - Snow</p> <br>
 
 ![Mandelbrot Set - Snow (more iterations)](others/snow-more-iters.png)
-*Mandelbrot Set - Snow (more iterations)*
+<p align="center">Mandelbrot Set - Snow (more iterations)</p> <br>
 
 ![Star](others/star/star.png)
-*Star*
+<p align="center">Star</p> <br>
 
