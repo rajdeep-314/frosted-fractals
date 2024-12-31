@@ -4,8 +4,8 @@ This is my submission for Frosted Fractals - a fractal making competition hosted
 
 I'm submitting two images:
 
-- Snowmandelbrot: A mandelbrot set snowman, with a Christmas cap on top (made up of fractals as well)
-- Sierpinski tree: A christmas tree made up of fractals with fractal snowflakes in the background
+- ***Snowmandelbrot:*** A mandelbrot set snowman, with a Christmas cap on top (made up of fractals as well)
+- ***Sierpinski tree:*** A christmas tree made up of fractals with fractal snowflakes in the background
 
 
 
