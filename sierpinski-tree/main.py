@@ -29,7 +29,6 @@ def plot_pts(pts_list, color_func = lambda pt : (255,255,255), surface = surf):
 # a Christmas-themed color function used for the tree
 chris_col_func = circ_gradient(width/2, height/2 - 100, ((255,50,50), (0,200,0), (255,50,50), (0,175,255)), 300)
 
-
 # generating the leaves and trunk
 leaves_pts = gen_tree_pts(width/2, height/2 - 110, 590, 3, 200000)
 trunk_pts = gen_carpet_pts(width/2, height/2 - 400, 240, 240, 100000)

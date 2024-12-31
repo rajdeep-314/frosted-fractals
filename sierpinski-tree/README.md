@@ -17,7 +17,7 @@ The *Sierpinski Tree*, as the name suggests, is largely made of Sierpinksi fract
     - `main.py`: 10,000
     - `sv-main.py`: 1,00,000
 
-You can find images of each of these individual fractals in their full glory down below. Each of these individual images were generated using the code inside `individuals/code`
+You can find images of each of these individual fractals in their full glory down below. Each of these individual images was generated using the code inside `individuals/code`
 
 
 

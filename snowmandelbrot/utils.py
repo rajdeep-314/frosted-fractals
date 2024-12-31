@@ -72,8 +72,8 @@ def eatan(a, b, c, d):
     return math.atan((b-d)/(a-c)) + pi*sgn(1 + sgn(a-c)) + 2*pi*sgn(sgn(a-c) - 1)*sgn(sgn(d-b) - 1)
 
 
-# gives the point that divides the segment from
-# (0, k1) to (0, k2) in the ratio r : (1-r)
+# gives the abscissa of the point that divides the
+# segment from (k1, 0) to (k2, 0) in the ratio r : (1-r)
 def ratio_div(k1, k2, r):
     return ((1-r)*k1 + r*k2)
 
@@ -93,7 +93,7 @@ def ratio_div_2d(p1, p2, r):
     return (ratio_div(p1[0], p2[0], r), ratio_div(p1[1], p2[1], r))
 
 
-# mid-point for two 2-tuples
+# mid-point of two 2-tuples
 def midpoint_2d(p1, p2):
     return ratio_div_2d(p1, p2, 0.5)
 
@@ -207,7 +207,7 @@ def rand_circ(x, y, r):
 
 
 # evaluates the point at a distance of `l` units from
-# pt, making an angle `a` with the X-axis
+# pt, making an angle `a` with the line `y = pt[1]`
 def polar_sum(pt, l, a):
     return (pt[0] + l*math.cos(a), pt[1] + l*math.sin(a))
 

@@ -19,8 +19,8 @@ scale = 810                 # one unit on the real number line = `scale` pixels
 
 
 # this real number is equal to the number of iterations of
-# the Mandelbrot formula (z_{n+1} = z_{n}^2 + z_0) the point z
-# goes outside inf (i.e. |z| > inf), divided by max_iter
+# the Mandelbrot formula (z_{n+1} = z_{n}^2 + z_0), after which
+# the point z goes outside inf (i.e. |z| > inf), divided by max_iter
 # for a point that never goes outside inf, it returns 1
 def k_factor(z, max_iter, inf):
     z0 = z

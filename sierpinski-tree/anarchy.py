@@ -18,11 +18,12 @@ def gen_triangle_pts(x0, y0, slen, npts):
     p1 = (x0 - slen/2, y0 - inradius)
     p2 = (x0 + slen/2, y0 - inradius)
     p3 = (x0, y0 + 2*inradius)
-    pts_list = [p1, p2, p3]             # points which the accumulator can use to "jump"
+    # points for the accumulator to use to jump
+    pts_list = [p1, p2, p3]
 
-    # the initial point is a random point inside the incircle
-    acc_pt = rand_circ(x0, y0, inradius)    # acc_pt -> accumulator point
-    out_pts = [acc_pt]                      # list of output points
+    # accumulator point: initially a random point in the incircle
+    acc_pt = rand_circ(x0, y0, inradius)
+    out_pts = [acc_pt]          # list of output points
 
     # generating the remaining npts-1 points using chaos game
     for i in range(npts-1):
@@ -33,7 +34,7 @@ def gen_triangle_pts(x0, y0, slen, npts):
     return out_pts
 
 
-# generates point for a Sierpinski Christmas tree, which consists
+# generates points for a Sierpinski Christmas tree, which consists
 # of `levels` Sierpinski triangles, stacked atop one another, with the
 # bottom-most's centroid being (x0, y0) and the number of points in each
 # of the triangles being npts
@@ -68,7 +69,7 @@ def gen_carpet_pts(x0, y0, l, w, npts):
 
     # accumulator point : initially a random point in the rectangle
     acc_pt = rand_rect(*p4, l, w)
-    out_pts = [acc_pt]      # list of output points
+    out_pts = [acc_pt]          # list of output points
 
     # generating the remaining npts-1 points using chaos game
     for i in range(npts - 1):
