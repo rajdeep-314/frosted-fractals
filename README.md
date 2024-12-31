@@ -7,6 +7,7 @@ I'm submitting two images:
 - ***Snowmandelbrot:*** A mandelbrot set snowman, with a Christmas cap on top (made up of fractals as well)
 - ***Sierpinski tree:*** A christmas tree made up of fractals with fractal snowflakes in the background
 
+Do go through the README files in each of the directories for more info on the fractals involved, the files, etc.
 
 
 ## Requirements
